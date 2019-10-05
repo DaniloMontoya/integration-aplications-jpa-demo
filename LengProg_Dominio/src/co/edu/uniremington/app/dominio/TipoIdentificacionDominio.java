@@ -49,5 +49,10 @@ public class TipoIdentificacionDominio {
 	public void setEdadMaxima(int edadMaxima) {
 		this.edadMaxima = edadMaxima;
 	}
+	@Override
+	public String toString() {
+		return "TipoIdentificacionDominio [codigo=" + codigo + ", nombre=" + nombre + ", edadMinima=" + edadMinima
+				+ ", edadMaxima=" + edadMaxima + "]";
+	}
 	
 }

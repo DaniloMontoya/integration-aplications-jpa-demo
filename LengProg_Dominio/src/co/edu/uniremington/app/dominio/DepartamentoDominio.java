@@ -47,4 +47,11 @@ public class DepartamentoDominio {
 		this.pais = pais;
 	}
 
+	@Override
+	public String toString() {
+		return "DepartamentoDominio [codigo=" + codigo + ", nombre=" + nombre + ", pais=" + pais + "]";
+	}
+	
+	
+
 }

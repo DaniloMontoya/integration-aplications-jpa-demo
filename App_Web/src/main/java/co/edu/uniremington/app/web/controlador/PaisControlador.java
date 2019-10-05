@@ -3,6 +3,8 @@ package co.edu.uniremington.app.web.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -10,7 +12,7 @@ import co.edu.uniremington.app.dominio.PaisDominio;
 import co.edu.uniremington.app.servicio.implementacion.PaisServicio;
 
 @Controller
-public class TestControlador {
+public class PaisControlador {
 
 	@Autowired
 	private PaisServicio paisServicio;
@@ -20,8 +22,7 @@ public class TestControlador {
 		PaisDominio pais = new PaisDominio();
 		pais.setNombre("Colombia-Danilo");
 		paisServicio.crear(pais);
-		mostrarPaises();
-			
+		mostrarPaises();	
 	}
 	
 	
@@ -43,10 +44,13 @@ public class TestControlador {
 		mostrarPaises();	
 	}
 	
-	private void mostrarPaises() {
+	@GetMapping(value = "/get-paises", produces = "application/json")
+	private ResponseEntity<List<PaisDominio>> mostrarPaises() {
 		List<PaisDominio> lista = paisServicio.consultar(null);
+		
 		for(PaisDominio paisDominio : lista) {
 			System.out.println(paisDominio.toString());
 		}
+		return new ResponseEntity<List<PaisDominio>>(lista, HttpStatus.OK);
 	}
 }

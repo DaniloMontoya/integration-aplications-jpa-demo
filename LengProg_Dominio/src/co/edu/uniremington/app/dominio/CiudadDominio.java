@@ -48,4 +48,9 @@ public class CiudadDominio {
 		this.departamento = departamento;
 	}
 
+	@Override
+	public String toString() {
+		return "CiudadDominio [codigo=" + codigo + ", nombre=" + nombre + ", departamento=" + departamento + "]";
+	}
+
 }

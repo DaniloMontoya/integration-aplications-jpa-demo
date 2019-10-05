@@ -34,4 +34,9 @@ public class EstadoCivilDominio {
 		this.nombre = nombre;
 	}
 
+	@Override
+	public String toString() {
+		return "EstadoCivilDominio [codigo=" + codigo + ", nombre=" + nombre + "]";
+	}
+
 }

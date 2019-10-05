@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "APP_ESUDIANTE_DOMINIO", schema = "dbo")
+@Table(name = "APP_ESTUDIANTE_TBL", schema = "dbo")
 public class EstudianteDominio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class EstudianteDominio {
 	private int codigo;
 	
 	@ManyToOne
-	@JoinColumn(name="IN_COIGO_TIPO_IDENTIFICACION")
+	@JoinColumn(name="IN_CODIGO_TIPO_IDENTIFICACION")
 	private TipoIdentificacionDominio tipoIdentificacion;
 	
 	@Column(name = "NV_NUMERO_IDENTIFICACION")
@@ -43,8 +43,9 @@ public class EstudianteDominio {
 	private String direccion;
 	
 	@ManyToOne
-	@JoinColumn(name="IN_COIGO_CIUDAD_RESIDENCIA")
+	@JoinColumn(name="IN_CODIGO_CIUDAD_RESIDENCIA")
 	private CiudadDominio ciudadResidencia;
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -98,6 +99,13 @@ public class EstudianteDominio {
 	}
 	public void setCiudadResidencia(CiudadDominio ciudadResidencia) {
 		this.ciudadResidencia = ciudadResidencia;
+	}
+	@Override
+	public String toString() {
+		return "EstudianteDominio [codigo=" + codigo + ", tipoIdentificacion=" + tipoIdentificacion
+				+ ", numeroIdentificacion=" + numeroIdentificacion + ", nombre=" + nombre + ", fechaNacimiento="
+				+ fechaNacimiento + ", estadoCivil=" + estadoCivil + ", correoElectronico=" + correoElectronico
+				+ ", direccion=" + direccion + ", ciudadResidencia=" + ciudadResidencia + "]";
 	}
 	
 }
