@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Mensajes</title>
+
+<!-- BOOTSTRAP CSS -->
+<link href="../../static/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+	<div class="container">
+		<br />
+		<div>
+			<a href="/mensaje/guardar/0" class="btn btn-primary">Agregar</a>
+		</div>
+		<div th:switch="${list}">
+			<h2 th:case="null">No hay mensajes</h2>
+			<div th:case="*">
+				<h2>Mensajes</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Codigo</th>
+							<th>Codigo Texto</th>
+							<th>Mensaje</th>
+							<th>Aplicación</th>
+							<th>Categoria</th>
+							<th>Tipo</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="mensaje : ${list}">
+							<td th:text="${mensaje.codigo}"></td>
+							<td th:text="${mensaje.nvcodigo}"></td>
+							<td th:text="${mensaje.mensaje}"></td>
+							<td th:text="${mensaje.aplicacion.nombre}"></td>
+							<td th:text="${mensaje.categoria.nombre}"></td>
+							<td th:text="${mensaje.tipo.nombre}"></td>
+							<td><a th:href="@{/mensaje/guardar/{id}(id=${mensaje.codigo})}"class="btn btn-sm btn-warning">Editar</a></td>
+							<td><a th:href="@{/mensaje/eliminar/{id}(id=${mensaje.codigo})}"class="btn btn-sm btn-danger">Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

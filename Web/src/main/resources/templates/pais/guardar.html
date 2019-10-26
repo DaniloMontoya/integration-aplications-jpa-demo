@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Paises</title>
+
+<!-- BOOTSTRAP CSS -->
+<link href="../../static/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+	<div class="container">
+		<form action="#" th:action="@{/pais/guardar}" class="form-group" th:object="${pais}" method="post">
+		<h2>Agregar Paises</h2>
+			<input type="hidden" th:field="*{codigo}" name="codigo">
+			<div class="form-group">
+				<label for="nombre">Nombre</label>
+				<input type="text"class="form-control" id="nombre" th:field="*{nombre}" name="nombre">
+			</div>
+			<button type="submit" class="btn btn-success btn-lg btn-block">Guardar</button>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Paises</title>
+
+<!-- BOOTSTRAP CSS -->
+<link href="../../static/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+	<div class="container">
+		<br />
+		<div>
+			<a href="/pais/guardar/0" class="btn btn-success">Agregar</a>
+		</div>
+		<div th:switch="${list}">
+			<h2 th:case="null">No hay paises</h2>
+			<div th:case="*">
+				<h2>Paises</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Codigo</th>
+							<th>Nombre</th>
+							<th>Editar</th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="pais : ${list}">
+							<td th:text="${pais.codigo}"></td>
+							<td th:text="${pais.nombre}"></td>
+							<td><a th:href="@{/pais/guardar/{id}(id=${pais.codigo})}"class="btn btn-sm btn-warning">Editar</a></td>
+							<td><a th:href="@{/pais/eliminar/{id}(id=${pais.codigo})}"class="btn btn-sm btn-danger">Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

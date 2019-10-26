@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Mensajes</title>
+
+<!-- BOOTSTRAP CSS -->
+<link href="../../static/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+	<div class="container">
+		<form action="#" th:action="@{/mensaje/guardar}" class="form-group"
+			th:object="${mensaje}" method="post">
+			<h2>Agregar Mensajes</h2>
+			<input type="hidden" th:field="*{codigo}" name="codigo">
+			<div class="form-group">
+				<label for="nvcodigo">Codigo Texto</label> <input type="text"
+					class="form-control" id="nvcodigo" th:field="*{nvcodigo}"
+					name="nvcodigo">
+			</div>
+			<div class="form-group">
+				<label for="nombre">Mensaje</label> <input type="text"
+					class="form-control" id="mensaje" th:field="*{mensaje}"
+					name="mensaje">
+			</div>
+			<div class="form-group">
+				<select th:field="*{aplicacion}" class="custom-select">
+					<option th:value=1 th:text="APP"></option>
+					<option th:value=2 th:text="PARAMETROS"></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<select th:field="*{categoria}" class="custom-select">
+					<option th:value="1" th:text="EXITO"></option>
+					<option th:value="2" th:text="ADVERTENCIA"></option>
+					<option th:value="3" th:text="ERROR"></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<select th:field="*{tipo}" class="custom-select">
+					<option th:value="1" th:text="TECNICO"></option>
+					<option th:value="2" th:text="USUARIO"></option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-success">Guardar</button>
+		</form>
+	</div>
+</body>
+</html>

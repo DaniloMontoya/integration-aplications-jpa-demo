@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Parametro</title>
+
+<!-- BOOTSTRAP CSS -->
+<link href="../../static/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+	<div class="container">
+		<form action="#" th:action="@{/parametro/guardar}" class="form-group"
+			th:object="${parametro}" method="post">
+			<h2>Agregar parametro</h2>
+			<input type="hidden" th:field="*{codigo}" name="codigo">
+			<div class="form-group">
+				<label for="nombre">Clave</label> <input type="text"
+					class="form-control" id="clave" th:field="*{clave}" name="clave">
+			</div>
+			<div class="form-group">
+				<label for="nombre">Valor</label> <input type="text"
+					class="form-control" id="valor" th:field="*{valor}" name="valor">
+			</div>
+			<div class="form-group">
+				<select th:field="*{aplicacion}" class="custom-select">
+					<option th:value= 1 th:text="APP"></option>
+					<option th:value=2 th:text="PARAMETROS"></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<select th:field="*{tipoDato}" class="custom-select">
+					<option th:value=1 th:text="TEXTO"></option>
+				</select>
+			</div>
+			<div class="col-md-4 center-block">
+			</div>
+			<button type="submit" class="btn btn-success center-block">Guardar</button>
+		</form>
+	</div>
+</body>
+</html>

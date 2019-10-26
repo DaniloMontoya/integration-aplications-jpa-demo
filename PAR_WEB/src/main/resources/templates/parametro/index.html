@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Parametros</title>
+
+<!-- BOOTSTRAP CSS -->
+<link href="../../static/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+	<div class="container">
+		<br />
+		<div>
+			<a href="/parametro/guardar/0" class="btn btn-success btn-lg btn-block">Agregar</a>
+		</div>
+		<div th:switch="${list}">
+			<h2 th:case="null">No hay parametros</h2>
+			<div th:case="*">
+				<h2>Lista de parametros</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Codigo</th>
+							<th>Clave</th>
+							<th>Valor</th>
+							<th>Aplicación</th>
+							<th>Tipo de dato</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="parametro : ${list}">
+							<td th:text="${parametro.codigo}"></td>
+							<td th:text="${parametro.clave}"></td>
+							<td th:text="${parametro.valor}"></td>
+							<td th:text="${parametro.aplicacion.nombre}"></td>
+							<td th:text="${parametro.tipoDato.nombre}"></td>
+							<td><a th:href="@{/parametro/guardar/{id}(id=${parametro.codigo})}"class="btn btn-sm btn btn-primary">Editar</a></td>
+							<td><a th:href="@{/parametro/eliminar/{id}(id=${parametro.codigo})}"class="btn btn-sm btn-danger">Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
